@@ -18,7 +18,7 @@ const getAllPlayers = async () => {
        return playersList
 
     } catch (err) {
-        console.log('errrrrrooooooor', err.stack);
+        console.log(err.stack);
     }
     finally {
         await client.close();
