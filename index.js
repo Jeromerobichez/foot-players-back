@@ -3,7 +3,9 @@ const cors = require('cors')
 const app = express()
 require('dotenv').config()
 const {
-  getAllPlayers
+  getAllPlayers,
+  insertPlayer,
+  deletePlayer
 } = require('./actions')
 
 const port = process.env.PORT

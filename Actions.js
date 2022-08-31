@@ -25,8 +25,46 @@ const getAllPlayers = async () => {
     }
 }
 
+const insertPlayer = async (data) => {
+    try {
+        await client.connect();
+        console.log("Connected correctly to server");
+        const db = client.db(football);
+        // Use the collection "people"
+        const col = db.collection("players");
+         await col.insertOne(data);
+       return `New crew members has successfully been added`
 
+    } catch (err) {
+        console.log(err.stack);
+    }
+    finally {
+        await client.close();
+    }
+}
+const deletePlayer = async () => {
+    let playersList = []
+    try {
+        await client.connect();
+        console.log("Connected correctly to server");
+        const db = client.db(football);
+        const col = db.collection("players");
+         await col.insertOne(data);
+        const dbResults = await col.find();
+        await dbResults.forEach((e, i) => playersList.push(e.name))
+
+       return `deletion successfull`
+
+    } catch (err) {
+        console.log(err.stack);
+    }
+    finally {
+        await client.close();
+    }
+}
+getAllPlayers()
 module.exports = {
-    getAllPlayers
+    getAllPlayers,
+    insertPlayer,
+    deletePlayer
  }
-
