@@ -14,7 +14,7 @@ const getAllPlayers = async () => {
         const db = client.db(football);
         const col = db.collection("players");
         const dbResults = await col.find();
-        await dbResults.forEach((e, i) => playersList.push(e))
+        await dbResults.forEach((player, i) => playersList.push(player))
        return playersList
 
     } catch (err) {
