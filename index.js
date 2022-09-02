@@ -21,3 +21,21 @@ app.get('/', async(req, res) => {
   res.set('Access-Control-Allow-Origin', '*')
   res.send(allPlayers) 
   })
+
+  app.post('/', async (req, res) => { 
+    let player = []
+    await insertPlayer(req.body)
+
+    player = await getAllPlayers()
+    res.set('Access-Control-Allow-Origin', '*')
+    res.send(player) 
+})
+
+app.post('/delete', async (req, res) => { 
+  let remainingPlayers 
+  console.log('req.body', req.body) 
+  await deletePlayer(req.body._id)
+ remainingPlayers = await getAllPlayers()
+  res.set('Access-Control-Allow-Origin', '*')
+  res.send(remainingPlayers) 
+})
