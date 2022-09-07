@@ -10,7 +10,7 @@ const {
 
 const port = process.env.PORT
 app.listen(port, () => {
-  console.log(`Hello we are listening on port ${port}`)
+  console.log(`Hello server is listening on port ${port}`)
 })
 
 app.use(cors('*')) // allow access to the server from any domain
@@ -22,13 +22,13 @@ app.get('/', async(req, res) => {
   res.send(allPlayers) 
   })
 
-  app.post('/', async (req, res) => { 
-    let player = []
-    await insertPlayer(req.body)
+app.post('/', async (req, res) => { 
+  let player = []
+  await insertPlayer(req.body)
 
-    player = await getAllPlayers()
-    res.set('Access-Control-Allow-Origin', '*')
-    res.send(player) 
+  player = await getAllPlayers()
+  res.set('Access-Control-Allow-Origin', '*')
+  res.send(player) 
 })
 
 app.post('/delete', async (req, res) => { 

@@ -29,9 +29,10 @@ const getAllPlayers = async () => {
 const insertPlayer = async (data) => {
     try {
         await client.connect();
-        console.log("Connected correctly to server");
+        console.log("Connected correctly to server for insertion");
+        // choose the db 'football'
         const db = client.db(football);
-        // Use the collection "players"
+        // Use the collection "players" in db 'football'
         const col = db.collection("players");
          await col.insertOne(data);
        return `New crew members has successfully been added`
@@ -44,11 +45,10 @@ const insertPlayer = async (data) => {
     }
 }
 const deletePlayer = async (_id) => {
-    console.log('id in deletePLAYER', _id)
   
     try {
         await client.connect();
-        console.log("Connected correctly to server");
+        console.log("Connected correctly to server for deletion");
         const db = client.db(football);
         const col = db.collection("players");
         await col.deleteOne({_id: ObjectId(_id)});
