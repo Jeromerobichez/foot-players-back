@@ -6,7 +6,7 @@ const {
   getAllPlayers,
   insertPlayer,
   deletePlayer
-} = require('./actions')
+} = require('./Actions')
 
 const port = process.env.PORT
 app.listen(port, () => {
